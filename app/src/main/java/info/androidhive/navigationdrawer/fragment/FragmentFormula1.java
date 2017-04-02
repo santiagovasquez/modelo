@@ -122,7 +122,8 @@ public class FragmentFormula1 extends Fragment implements View.OnClickListener {
                         String s2=df.format(data[0]).toString();
                         String s3=df.format(data[2]).toString();
                         String s4=df.format(data[1]).toString();
-                        formulasModel.saveData(name,s,s1,s2,s3,s4);
+                        String s5="1";
+                        formulasModel.saveData(name,s,s1,s2,s3,s4,s5);
                         Toast.makeText(getContext(),"Resultado guardado correctamente",Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(getContext(),"Para guardar este resultado debes escribir un nombre.",Toast.LENGTH_SHORT).show();

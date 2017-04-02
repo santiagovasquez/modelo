@@ -1,5 +1,6 @@
 package info.androidhive.navigationdrawer.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,8 @@ import java.util.List;
 
 import info.androidhive.navigationdrawer.EntityLocal.FormulasModel;
 import info.androidhive.navigationdrawer.R;
+import info.androidhive.navigationdrawer.activity.FormulaSaveView2Activity;
+import info.androidhive.navigationdrawer.activity.FormulaSaveViewActivity;
 
 
 public class ListaResultadosFragment extends Fragment {
@@ -33,7 +36,7 @@ public class ListaResultadosFragment extends Fragment {
 
 
     public ListaResultadosFragment() {
-        // Required empty public constructor
+
     }
 
 
@@ -67,8 +70,6 @@ public class ListaResultadosFragment extends Fragment {
 
 
         findCategory(formulasModel.selectAll());
-
-        Log.e(verticalList.toString(),"HOLAAAAAAA");
         mVerticalAdapter =new VerticalAdapter(verticalList);
         LinearLayoutManager verticalLayoutmanager=new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mVertical_recycler_view.setLayoutManager(verticalLayoutmanager);
@@ -78,41 +79,16 @@ public class ListaResultadosFragment extends Fragment {
     }
 
     private void findCategory(List<FormulasModel> formulasModels) {
-        FormulasModel result = null;
-        for (FormulasModel cat : formulasModels) //assume categories isn't null.
-        { //assumes name isn't null.
+        for (FormulasModel formula : formulasModels)
+        {
             {
-                verticalList.add(cat.name);
-                mId.add(cat.getId().toString());
+                verticalList.add(formula.name);
+                mId.add(formula.getId().toString());
                 continue;
             }
-
-            //return fo;
         }
     }
 
-
-
-    static FormulasModel findCategoryByName(ArrayList<FormulasModel> categories, String name)
-    {
-        if(categories == null
-                || name == null
-                || name.length() == 0)
-            return null;
-
-        FormulasModel result = null;
-
-        for(FormulasModel c : categories) {
-            if(!c.getName().equals(name))
-
-                continue;
-            Log.e(c.name.toString(),"QQQQQQQ");
-            result = c;
-            break;
-        }
-
-        return result;
-    }
 
     public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.MyViewHolder> {
         private ArrayList<String> verticalList;
@@ -142,11 +118,42 @@ public class ListaResultadosFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
+            int newPosition = holder.getAdapterPosition();
+            verticalList.remove(newPosition);
+            notifyItemRemoved(newPosition);
+            notifyItemRangeChanged(newPosition,verticalList.size());
             holder.txtView.setText(verticalList.get(position));
+
+
+
             holder.txtView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(getContext(),mId.get(position).toString(),Toast.LENGTH_SHORT).show();
+                    String id = formulasModel.selectId();
+                    String name= formulasModel.nameId(mId.get(position));
+                    String type= formulasModel.selectType(mId.get(position));
+
+                    if (!id.equals("")){
+                        String idFormula = String.valueOf(mId.get(position).toString());
+                        if (type.equals("1")){
+                            Intent intent = new Intent(v.getContext(), FormulaSaveViewActivity.class);
+                            intent.removeExtra("id");
+                            intent.removeExtra("name");
+                            intent.putExtra("id",idFormula);
+                            intent.putExtra("name",name);
+                            v.getContext().startActivity(intent);
+                        }else{
+                            Intent intent = new Intent(v.getContext(), FormulaSaveView2Activity.class);
+                            intent.removeExtra("id");
+                            intent.removeExtra("name");
+                            intent.putExtra("id",idFormula);
+                            intent.putExtra("name",name);
+                            v.getContext().startActivity(intent);
+                        }
+                    }else{
+                        Toast.makeText(getContext(),"este resultado ya fue eliminado.",Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }

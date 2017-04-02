@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="info.androidhive.navigationdrawer">
 
-
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -25,7 +24,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.AboutUsActivity"
             android:label="@string/activity_title_about_us" />
@@ -41,11 +39,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.GenericActivity"></activity>
+        <activity android:name=".activity.GenericActivity" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <activity android:name=".activity.FormulaSaveViewActivity" />
+        <activity android:name=".activity.FormulaSaveView2Activity"></activity>
     </application>
 
 </manifest>

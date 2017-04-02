@@ -41,10 +41,26 @@ public class FormulasModel extends Model {
     @Column(name="value_7")
     public String value_7;
 
+    @Column(name="type")
+    public String type;
+
+    public String getType() {
+        FormulasModel formulasModel=new Select().from(FormulasModel.class).executeSingle();
+        return formulasModel.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getName() {
         FormulasModel formulasModel=new Select().from(FormulasModel.class).executeSingle();
         return formulasModel.name;
+    }
+
+    public String selectType(String id){
+        FormulasModel userMdl = new Select().from(FormulasModel.class).where("id=?", id).executeSingle();
+        return userMdl.type;
     }
 
     public void setName(String name) {
@@ -107,17 +123,18 @@ public class FormulasModel extends Model {
         this.value_7 = value_7;
     }
 
-    public void saveData(String name, String txtuno, String txtdos, String val1, String val2, String val3){
+    public void saveData(String name, String txtuno, String txtdos, String val1, String val2, String val3, String type){
         this.name=name;
         this.txt_1 =txtuno;
         this.txt_2 =txtdos;
         this.value_3=val1;
         this.value_4=val2;
         this.value_5=val3;
+        this.type=type;
         save();
     }
 
-    public void saveDataDos(String name, String txtuno, String txtdos, String val1, String val2, String val3, String val4, String val5){
+    public void saveDataDos(String name, String txtuno, String txtdos, String val1, String val2, String val3, String val4, String val5, String type){
         this.name=name;
         this.txt_1 =txtuno;
         this.txt_2 =txtdos;
@@ -126,11 +143,26 @@ public class FormulasModel extends Model {
         this.value_5=val3;
         this.value_6=val4;
         this.value_7=val5;
+        this.type=type;
         save();
+    }
+
+    public static String nameId(String id){
+        FormulasModel userMdl = new Select().from(FormulasModel.class).where("id=?", id).executeSingle();
+        return userMdl.name;
+    }
+
+    public static String selectId(){
+        FormulasModel formulasModel=new Select().from(FormulasModel.class).executeSingle();
+        return formulasModel.getId().toString();
     }
 
     public static List<FormulasModel> selectAll(){
         return new Select().from(FormulasModel.class).orderBy("name ASC").execute();
+    }
+
+    public static List<FormulasModel> selectFormula(String id){
+        return new Select().from(FormulasModel.class).where("id = ?", id).execute();
     }
 
 

@@ -57,6 +57,7 @@ public class StartAppActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         Intent intent = new Intent(this,StartAppActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }
