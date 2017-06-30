@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "512943541844",
+    "firebase_url": "https://fir-esteemator-lite.firebaseio.com",
+    "project_id": "firebase-esteemator-lite",
+    "storage_bucket": "firebase-esteemator-lite.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512943541844:android:d63b39cb22493f2e",
+        "android_client_info": {
+          "package_name": "info.androidhive.olarteEsteematorlite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512943541844-ffjis8fe8e3nco42m8kpcirmu6r48qco.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "512943541844-sj8o8fdo4elhp4pg6rp6dio00hd016gs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "info.androidhive.olarteEsteematorlite",
+            "certificate_hash": "e2a80c98dfea02ec189c9815b5da504f7ccd3c64"
+          }
+        },
+        {
+          "client_id": "512943541844-f72sq4svlrtmovbnm2nktvd8fvcss66f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCowcR783drtQte67bWyKSGH34-jafGxy0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512943541844-ffjis8fe8e3nco42m8kpcirmu6r48qco.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

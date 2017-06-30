@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "450601057433",
+    "firebase_url": "https://proyectosantiago-f2334.firebaseio.com",
+    "project_id": "proyectosantiago-f2334",
+    "storage_bucket": "proyectosantiago-f2334.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450601057433:android:944ab8f17d7a06c2",
+        "android_client_info": {
+          "package_name": "info.androidhive.olarteEsteematorlite.activity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450601057433-n25mf58mtj6h9q4m3c9a25d7iqnrbvvt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR3ugy4HpofLCQ-yaRSctn_engtCDGqy8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
