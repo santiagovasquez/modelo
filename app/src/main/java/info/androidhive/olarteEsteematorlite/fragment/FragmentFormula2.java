@@ -3,6 +3,7 @@ package info.androidhive.olarteEsteematorlite.fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
@@ -15,8 +16,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DecimalFormat;
+import com.firebase.client.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import java.text.DecimalFormat;
+import java.util.Map;
+
+import info.androidhive.olarteEsteematorlite.Config.Config;
 import info.androidhive.olarteEsteematorlite.EntityLocal.FormulasModel;
 import info.androidhive.olarteEsteematorlite.R;
 import info.androidhive.olarteEsteematorlite.activity.Formulas;
@@ -30,9 +37,10 @@ public class FragmentFormula2 extends Fragment implements View.OnClickListener {
     private Button btncalcular;
     private TextView resultado1,resultado2,resultado3,resultado4,resultado5;
     private String mTexto = "";
-    FormulasModel formulasModel = new FormulasModel();
-
-
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private String uid;
+    private Firebase users;
     private String mParam1;
     private String mParam2;
 
@@ -54,6 +62,19 @@ public class FragmentFormula2 extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    uid = user.getUid();
+                }
+            }
+
+        };
+        mAuth = FirebaseAuth.getInstance();
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -121,15 +142,21 @@ public class FragmentFormula2 extends Fragment implements View.OnClickListener {
                     mTexto=input.getText().toString();
                     if (!mTexto.equals("")){
                         String name=mTexto;
-                        String s =txtuno.getText().toString();
-                        String s1=txtdos.getText().toString();
-                        String s2=df.format(data[0]).toString();
-                        String s3=df.format(data[1]).toString();
-                        String s4=df.format(data[2]).toString();
-                        String s5=df.format(data[3]).toString();
-                        String s6=df.format(data[4]).toString();
-                        String s7="2";
-                        formulasModel.saveDataDos(name,s,s1,s2,s3,s4,s5,s6,s7);
+                        String txt_uno =txtuno.getText().toString();
+                        String txt_dos=txtdos.getText().toString();
+                        String s1=df.format(data[0]).toString();
+                        String s2=df.format(data[1]).toString();
+                        String s3=df.format(data[2]).toString();
+                        String s4=df.format(data[3]).toString();
+                        String s5=df.format(data[4]).toString();
+
+                        Config config = new Config();
+                        String key = new Firebase(config.getFirebaseURL()).child("Formulas").push().getKey(); //generar id nuevo
+                        users = new Firebase(config.getFirebaseURL()).child("Formulas").child(key.toString());
+                        users = new Firebase(config.getFirebaseURL()).child("Formulas").child(key.toString());
+                        Formulas  formulas = new Formulas(name,txt_uno,txt_dos,s1,s2,s3,s4,s5,uid);
+                        Map<String, Object> value = formulas.formula3();
+                        users.setValue(value);
                         Toast.makeText(getContext(),getResources().getString(R.string.save_success),Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(getContext(),getResources().getString(R.string.val_null),Toast.LENGTH_SHORT).show();
@@ -147,4 +174,21 @@ public class FragmentFormula2 extends Fragment implements View.OnClickListener {
 
         }
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+        // ...
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+        // ...
+    }
+
 }

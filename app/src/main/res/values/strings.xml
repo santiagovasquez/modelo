@@ -7,39 +7,8 @@
     <string name="closeDrawer">close_drawer</string>
     <string name="nav_home">Inicio</string>
     <string name="nav_photos">Mis Resultados</string>
-    <string name="nav_notifications">Comprar esteemator full</string>
-    <string name="nav_about_us">Sobre Nosotros</string>
-    <string-array name="nav_item_activity_titles">
-        <item>Inicio</item>
-        <item>Mis Resultados</item>
-        <item>Comprar esteemator full</item>
-    </string-array>
-
-    <string name="activity_title_about_us">Sobre Nosotros</string>
-    <string name="activity_title_privacy_policy">Política de privacidad</string>
-    <string name="action_clear_all">Clear All</string>
-    <string name="action_logout">Logout</string>
-    <string name="action_mark_all_read">Mark All as Read</string>
-    <string name="privacy_policy">Política de privacidad</string>
-    <string name="transitionname_picture">transitionnamepicture</string>
-    <string name="formula1">Estimador del Precio de Venta conociendo el Porcentaje de Margen de Utilidad deseado.</string>
-    <string name="formula3">Estimador del Punto de Equilibrio en Valor.</string>
-    <string name="formItem2">Ingrese por favor el Margen Deseado (en %)</string>
+    <string name="nav_notifications">Comprar esteemator pro</string>
+    <string name="facebook_app_id">430568403973413</string>
+    <string name="server_client_id">512943541844-ffjis8fe8e3nco42m8kpcirmu6r48qco.apps.googleusercontent.com</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="formItem1">Ingrese por favor el Costo Total del Producto o Servicio (En su Moneda)</string>
-    <string name="btncalcular">Calcular</string>
-    <string name="sales">Ventas</string>
-    <string name="pruebas">Prueba</string>
-    <string name="item5">Menos Costo Mercancía Vendida (Costo Total del Producto)</string>
-    <string name="margen">Margen</string>
-    <string name="nullcamp">Completar todos los campos</string>
-    <string name="result">Precio De venta Es</string>
-    <string name="salir">No guardar</string>
-    <string name="formItem8">Ingrese por favor los Gastos Totales del Punto de Venta (En su Moneda)</string>
-    <string name="formItem9">Ingrese por favor el Margen Bruto Promedio (En %)</string>
-    <string name="menoscosto">Menos Costo Mercancía Vendida</string>
-    <string name="margenbruto">Margen Bruto</string>
-    <string name="menosgastosoperacion">Menos Gastos Operacionales</string>
-    <string name="utilidadneta">Utilidad Neta Antes de Int. E Imptos.</string>
-    <string name="formItem7">Punto de Equilibrio Calculado</string>
 </resources>

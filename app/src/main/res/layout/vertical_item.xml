@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -7,11 +7,24 @@
     android:layout_height="55dp">
 
 
+
     <TextView
         android:textColor="#000000"
         android:textSize="18sp"
         android:padding="16dp"
         android:id="@+id/txtView"
+        android:onClick="onClick"
+        android:text="nombre"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</LinearLayout>
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="match_parent"
+        android:id="@+id/imgRemove"
+        android:onClick="onClick"
+        android:visibility="visible"
+        android:src="@drawable/ic_close_red_600_24dp"
+        android:layout_gravity="right" />
+</FrameLayout>
+

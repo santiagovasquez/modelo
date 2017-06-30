@@ -4,8 +4,4 @@
     android:layout_height="match_parent"
     android:background="@drawable/homeesp"
     tools:context=".activity.StartAppActivity" >
-
-    <include layout="@layout/toolbar_main_start"></include>
-
-
 </RelativeLayout>

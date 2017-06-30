@@ -6,20 +6,14 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.List;
-
-import info.androidhive.olarteEsteematorlite.EntityLocal.FormulasModel;
 import info.androidhive.olarteEsteematorlite.R;
 
 
 public class FormulaSaveViewActivity extends AppCompatActivity {
 
-    String mName;
-    String mId;
-    List<FormulasModel> mResultado;
+    String mName, mTxt2, mTxt1, mVal1, mVal3, mVal2;
     EditText mTxt_result_uno,mTxt_result_dos;
     TextView mTxt_resultado1,mTxt_resultado2,mTxt_resultado3;
-    FormulasModel formulasModel = new FormulasModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +21,18 @@ public class FormulaSaveViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_formula_save_view);
         iniciarVariables();
         Bundle bundle = getIntent().getExtras();
-        mName=bundle.getString("name",mName).toString();
-        mId=bundle.getString("id",mId).toString();
-        mResultado=formulasModel.selectFormula(mId);
-        for (FormulasModel formula: mResultado ){
-            mTxt_result_uno.setText(formula.txt_1.toString());
-            mTxt_result_dos.setText(formula.txt_2.toString());
-            mTxt_resultado1.setText(formula.value_3.toString());
-            mTxt_resultado2.setText(formula.value_4.toString());
-            mTxt_resultado3.setText(formula.value_5.toString());
-        }
+        mTxt1 =bundle.getString("txt1", mTxt1).toString();
+        mTxt2 =bundle.getString("txt2", mTxt2).toString();
+        mVal1 =bundle.getString("val1", mVal1).toString();
+        mVal2 =bundle.getString("val2", mVal2).toString();
+        mVal3 =bundle.getString("val3", mVal3).toString();
+        mName=bundle.getString("nombre",mName).toString();
+
+        mTxt_result_uno.setText(mTxt1.toString());
+        mTxt_result_dos.setText(mTxt2.toString());
+        mTxt_resultado1.setText(mVal1.toString());
+        mTxt_resultado2.setText(mVal2.toString());
+        mTxt_resultado3.setText(mVal3.toString());
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
